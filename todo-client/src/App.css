@@ -1,0 +1,160 @@
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.todo-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: around;
+  align-items: center;
+  height: 80%;
+  background: #ffffff;
+  width: 50%;
+  border-radius: 10px;
+  box-shadow: 5px 6px 16px 9px rgba(33, 37, 41, 0.2);
+  min-width: 300px;
+  padding: 20px;
+}
+
+.header-row {
+  width: 100%;
+}
+
+.task-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  width: 95%;
+  height: 100%;
+  overflow-y: scroll;
+  margin-bottom: 20px;
+}
+
+.task-row {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin: 5px 0;
+  padding: 20px 0;
+  cursor: pointer;
+}
+
+.task-icon, .task-edit, .task-delete {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.task-icon svg {
+  font-size: 20px;
+  color: rgba(33, 37, 41, 0.13);
+}
+
+.task-icon svg{
+  font-size: 20px;
+  color: rgba(33, 37, 41, 0.13);
+  transition: .1s;
+}
+
+.task-icon.active svg{
+  color: rgb(2, 244, 157);
+  font-size: 8px;
+}
+
+.task-edit svg {
+  color: rgb(2, 244, 157);
+  cursor: pointer;
+}
+
+.task-delete {
+  color: rgb(224,58,5);
+  cursor: pointer;
+}
+
+.task-text {
+  margin-bottom: 0;
+  font-size: 20px;
+  transition: .3s;
+}
+
+.task-text.active {
+  font-size: 12px;
+  text-decoration: line-through;
+  color: rgba(33,37,41,0.45);
+}
+
+.input-row, .button-row {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.input-field {
+  padding: 12px;
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid rgba(33, 37, 41, 0.45);
+}
+
+.add-button {
+  width: 100%;
+  padding: 12px 24px;
+  background: rgb(0, 255, 163);
+  border-color: rgb(0, 255, 163);
+  border-radius: 10px;
+}
+
+
+.custom-scrollbar {
+  scrollbar-width: thin; 
+  scrollbar-color: rgb(0, 255, 163) #ffffff; 
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 12px; 
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #ffffff; 
+  border-radius: 6px; 
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #ffffff; 
+}
