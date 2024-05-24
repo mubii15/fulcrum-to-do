@@ -6,23 +6,30 @@ const App = () => {
   const [tasks, setTasks] = useState([]);
   const [newTask, setNewTask] = useState("");
   const [editingTask, setEditingTask] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     fetchTasks();
   }, []);
 
   const fetchTasks = async () => {
-    const response = await axios.get(`${process.env.REACT_APP_TODO_API}/todos`);
-    setTasks(response.data);
+    try {
+      const response = await axios.get(`${process.env.REACT_APP_TODO_API}/todos`);
+      setTasks(response.data);
+      setError(null);  // Clear any previous error
+    } catch (error) {
+      setError("Failed to connect");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const addTask = async () => {
     if (newTask.trim() === "") return;
     const response = await axios.post(
       `${process.env.REACT_APP_TODO_API}/todos`,
-      {
-        task: newTask,
-      }
+      { task: newTask }
     );
     setTasks([...tasks, response.data]);
     setNewTask("");
@@ -32,9 +39,7 @@ const App = () => {
     if (newTask.trim() === "") return;
     const response = await axios.put(
       `${process.env.REACT_APP_TODO_API}/todos/${id}`,
-      {
-        task: newTask,
-      }
+      { task: newTask }
     );
     setTasks(tasks.map((task) => (task._id === id ? response.data : task)));
     setNewTask("");
@@ -52,7 +57,6 @@ const App = () => {
   };
 
   const toggleComplete = async (id, completed) => {
-    console.log(completed);
     const response = await axios.put(
       `${process.env.REACT_APP_TODO_API}/todos/${id}`,
       { completed: !completed }
@@ -71,17 +75,49 @@ const App = () => {
                   <h1 className="text-center">To-Do List</h1>
                 </div>
                 <div
-                    style={{
-                      height: 40,
-                      width: "100%",
-                      position: "absolute",
-                      top: "65%",
-                      background: "linear-gradient(rgba(0,0,0,0), white 30%)",
-                      zIndex: 5,
-                    }}
-                  />
+                  style={{
+                    height: 40,
+                    width: "100%",
+                    position: "absolute",
+                    top: "65%",
+                    background: "linear-gradient(rgba(0,0,0,0), white 30%)",
+                    zIndex: 5,
+                  }}
+                />
                 <div className="task-list custom-scrollbar">
-                  {tasks.length === 0 ? (
+                  {loading ? (
+                    <p
+                      className="text-center"
+                      style={{
+                        height: 500,
+                        width: "100%",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        fontSize: "2rem",
+                        fontWeight: "bold",
+                        color: "rgba(33,37,41,0.45)",
+                      }}
+                    >
+                      Loading...
+                    </p>
+                  ) : error ? (
+                    <p
+                      className="text-center"
+                      style={{
+                        height: 500,
+                        width: "100%",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        fontSize: "2rem",
+                        fontWeight: "bold",
+                        color: "rgba(33,37,41,0.45)",
+                      }}
+                    >
+                      {error}
+                    </p>
+                  ) : tasks.length === 0 ? (
                     <p
                       className="text-center"
                       style={{
