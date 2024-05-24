@@ -1,13 +1,15 @@
-body, html {
-  height: 100%;
+body,
+html {
   margin: 0;
+  justify-content: center;
+  align-items: center;
 }
 
 header {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 90vh;
 }
 
 .container {
@@ -37,6 +39,7 @@ header {
 .todo-container {
   display: flex;
   flex-direction: column;
+  position: relative;
   justify-content: around;
   align-items: center;
   height: 80%;
@@ -59,8 +62,12 @@ header {
   align-items: center;
   width: 95%;
   height: 100%;
+  position: relative;
   overflow-y: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
   margin-bottom: 20px;
+  -webkit-overflow-scrolling: touch; 
 }
 
 .task-row {
@@ -72,7 +79,9 @@ header {
   cursor: pointer;
 }
 
-.task-icon, .task-edit, .task-delete {
+.task-icon,
+.task-edit,
+.task-delete {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -83,13 +92,13 @@ header {
   color: rgba(33, 37, 41, 0.13);
 }
 
-.task-icon svg{
+.task-icon svg {
   font-size: 20px;
   color: rgba(33, 37, 41, 0.13);
-  transition: .1s;
+  transition: 0.1s;
 }
 
-.task-icon.active svg{
+.task-icon.active svg {
   color: rgb(2, 244, 157);
   font-size: 8px;
 }
@@ -100,23 +109,24 @@ header {
 }
 
 .task-delete {
-  color: rgb(224,58,5);
+  color: rgb(224, 58, 5);
   cursor: pointer;
 }
 
 .task-text {
   margin-bottom: 0;
   font-size: 20px;
-  transition: .3s;
+  transition: 0.3s;
 }
 
 .task-text.active {
   font-size: 12px;
   text-decoration: line-through;
-  color: rgba(33,37,41,0.45);
+  color: rgba(33, 37, 41, 0.45);
 }
 
-.input-row, .button-row {
+.input-row,
+.button-row {
   width: 100%;
   margin-top: 10px;
 }
@@ -134,27 +144,36 @@ header {
   background: rgb(0, 255, 163);
   border-color: rgb(0, 255, 163);
   border-radius: 10px;
+  transition: .3s;
 }
 
+.add-button:hover {
+  background: black;
+  border-color: rgb(0, 255, 163);
+}
+.add-button:active {
+  background: black;
+  border-color: rgb(0, 255, 163);
+}
 
 .custom-scrollbar {
-  scrollbar-width: thin; 
-  scrollbar-color: rgb(0, 255, 163) #ffffff; 
+  scrollbar-width: thin;
+  scrollbar-color: rgb(0, 255, 163) #ffffff;
 }
 
 .custom-scrollbar::-webkit-scrollbar {
-  width: 12px; 
+  width: 12px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
-  background: #f1f1f1; 
+  background: #f1f1f1;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #ffffff; 
-  border-radius: 6px; 
+  background: #ffffff;
+  border-radius: 6px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #ffffff; 
+  background: #ffffff;
 }

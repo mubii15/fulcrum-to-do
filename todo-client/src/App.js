@@ -70,14 +70,40 @@ const App = () => {
                 <div className="header-row">
                   <h1 className="text-center">To-Do List</h1>
                 </div>
+                <div
+                    style={{
+                      height: 40,
+                      width: "100%",
+                      position: "absolute",
+                      top: "65%",
+                      background: "linear-gradient(rgba(0,0,0,0), white 30%)",
+                      zIndex: 5,
+                    }}
+                  />
                 <div className="task-list custom-scrollbar">
                   {tasks.length === 0 ? (
-                    <p className="text-center" style={{height: 500, width: "100%", display: "flex", justifyContent: "center", alignItems: "center", fontSize: "2rem", fontWeight: "bold", color: "rgba(33,37,41,0.45)"}}>Nothing to do</p>
+                    <p
+                      className="text-center"
+                      style={{
+                        height: 500,
+                        width: "100%",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        fontSize: "2rem",
+                        fontWeight: "bold",
+                        color: "rgba(33,37,41,0.45)",
+                      }}
+                    >
+                      Nothing to do
+                    </p>
                   ) : (
                     tasks.map((task) => (
                       <div className="task-row" key={task._id}>
                         <div
-                          onClick={() => toggleComplete(task._id, task.completed)}
+                          onClick={() =>
+                            toggleComplete(task._id, task.completed)
+                          }
                           className={
                             task.completed ? "task-icon active" : "task-icon"
                           }
@@ -94,7 +120,9 @@ const App = () => {
                           </svg>
                         </div>
                         <div
-                          onClick={() => toggleComplete(task._id, task.completed)}
+                          onClick={() =>
+                            toggleComplete(task._id, task.completed)
+                          }
                           className="col-8"
                         >
                           <p
@@ -105,7 +133,10 @@ const App = () => {
                             {task.task}
                           </p>
                         </div>
-                        <div onClick={() => editTask(task)} className="task-edit">
+                        <div
+                          onClick={() => editTask(task)}
+                          className="task-edit"
+                        >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="1em"
